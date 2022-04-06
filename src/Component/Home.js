@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import Poll from "react-polls";
-import { Container, Card, Row, Col } from 'react-bootstrap'
+import { Container, Card, Row, Col, Alert} from 'react-bootstrap'
 // use "npm install --legacy-peer-deps react-polls" to install poll package 
 
 function Home() {
   return (
     <div>
-      <h1>Home Page</h1>
       <img src="/images/NBALogo.png" alt="" width="128" height="128" />
-      <p>This is the NBA fan page for CPAN144 Final project. This is the home
+      <Alert variant="success">
+
+  <Alert.Heading>Welcome to the NBA Fan page</Alert.Heading>
+  <p>This is the NBA fan page for CPAN144 Final project. This is the home
         directory that will aid you in navigating you throughout the website. On this website
         you will be able to keep up to date with current NBA news, find information about your favorite NBA player, login/register to
         receive updates on the website and find information about us, the developers and give us any submission feedback.
       </p>
+  <hr />
+</Alert>
+
       <h1>MVP 2022 Fan Voting</h1>
       <h1><MockSurvey /></h1><br /><br />
 
