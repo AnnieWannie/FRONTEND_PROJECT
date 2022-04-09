@@ -1,28 +1,30 @@
 import React from 'react';
+import './Style.css'
+import { Form, Button} from 'react-bootstrap'
 
 function Login() {
   return (
     <div>
-      <form>
-        <label>
-          <h1>Login:</h1>
-          <br/> <input type="text" name="Username" placeholder='UserName'/><br/>
-          <input type="text" name="Login" placeholder='Password' />
-        </label>
-        <br/> <input type="submit" value="Submit"/>
-      </form><br/><br/>
-      <form>
-        <label>
-          <h1>Register:</h1>
-          <br/> <input type="text" name="Login" placeholder='FirstName' /><br/>
-          <input type="text" name="Login" placeholder='LastName' />
-          <br/> <input type="text" name="Username" placeholder='UserName'/><br/>
-           <input type="text" name="Username" placeholder='Password'/><br/>
-          <input type="text" name="Login" placeholder='Email' /><br/>
-          <input type="text" name="Login" placeholder='Address' />
-        </label>
-        <br/> <input type="submit" value="Submit" />
-      </form>
+<Form>
+  <Form.Group className="mb-3" controlId="formBasicEmail">
+    <Form.Label>Email address</Form.Label>
+    <Form.Control type="email" placeholder="Enter email" />
+    <Form.Text className="text-muted">
+      We'll never share your email with anyone else.
+    </Form.Text>
+  </Form.Group>
+
+  <Form.Group className="mb-3" controlId="formBasicPassword">
+    <Form.Label>Password</Form.Label>
+    <Form.Control type="password" placeholder="Password" />
+  </Form.Group>
+  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+    <Form.Check type="checkbox" label="Check me out" />
+  </Form.Group>
+  <Button variant="primary" type="submit">
+    Submit
+  </Button>
+</Form>
     </div>
 
   )
