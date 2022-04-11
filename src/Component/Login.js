@@ -5,6 +5,7 @@ import { Form, Button} from 'react-bootstrap'
 function Login() {
   return (
     <div>
+    <img src='images/fantasyleague.png'></img>
 <Form>
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>Email address</Form.Label>

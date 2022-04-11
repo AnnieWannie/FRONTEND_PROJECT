@@ -18,7 +18,15 @@ function App() {
 <>
   <Navbar bg="dark" variant="dark">
     <Container>
-    <Navbar.Brand href="#home">NBA</Navbar.Brand>
+    <Navbar.Brand href="/">
+    <img
+        src="Images\NAVBARLOGO.png"
+        width="75"
+        height="75"
+        className="d-inline-block align-top"
+        alt=""
+      />
+    </Navbar.Brand>
     <Nav className="me-auto">
       <Nav.Link as= {Link} to= "/">Home</Nav.Link>
       <Nav.Link as= {Link} to="/Player">Players/Statistics</Nav.Link>
