@@ -1,3 +1,4 @@
+import { getByDisplayValue } from '@testing-library/react';
 import React from 'react';
 import { useState } from "react";
 import './Style.css'
@@ -10,7 +11,7 @@ function Player() {
         Teams & Players
     </h2>
         <br></br>
-      <PlayerMount/>
+      <PlayerMount />
       <PlayerOfTheDay/>
       <TeamMount />
       
@@ -21,10 +22,10 @@ function Player() {
 
 
  function PlayerOfTheDay(){
-     var today = new Date();
-     var month = today.getMonth() + 1;
-     var day = today.getDate();
-     var year = today.getFullYear();
+  var today = new Date();
+  var month = today.getMonth() + 1;
+  var day = today.getDate();
+  var year = today.getFullYear();
    return (
      <div className="potd">
       <h3>Player of the Day {month}/{day}/{year}</h3>
@@ -49,7 +50,6 @@ function Player() {
 
 
 
-
 class TeamMount extends React.Component {
   constructor(props) {
     super(props);
@@ -57,7 +57,8 @@ class TeamMount extends React.Component {
       team:[]
     };
   }
-  
+
+
   componentDidMount() {
     const options = {
       method: 'GET',
@@ -102,15 +103,18 @@ class PlayerMount extends React.Component {
       playerLookup:''
     };
   }
- 
-  // handlePlayerSearch(event){
-  //   this.setState({playerLookup:event.target.value});
-  //   event.preventDefault();
-  // }
+
+  searchFunc = (event) =>{
+    this.setState({playerLookup:event.target.value});
+  }
+
+  searchHandler = (event) => {
+        event.preventDefault();  
+        this.componentDidMount();
+      }
 
   componentDidMount() {
-    // const {playerLookup} = this.state.playerLookup;
-    const playerLookup = prompt("Please enter the name of the player you would like to search");
+    const playerLookup = this.state.playerLookup
     const options = {
       method: 'GET',
       headers: {
@@ -134,22 +138,19 @@ class PlayerMount extends React.Component {
     const {player} = this.state;
     let playerHolder;
       return (
-        <div>
+        <div className='playerdetails'>
         {playerHolder = player.map(players => (              
-           <p className = 'playerdetails'>
+           <p>
            <h3>Player Search Result</h3> 
            <img src='images/NBALogo.png' style={{width:'150px', height:'150px'}}></img><br/>
            {players.first_name} {players.last_name} <br/> Team: {players.team.full_name} <br/> Division: {players.team.division} <br/> Position: {players.position} <br/> Height: {players.height_feet}ft {players.height_inches}in
            <br/><br/>
-           {/* <form onSubmit={this.handlePlayerSearch}>
-             <label>
-               Player Search:{' '}
-               <input type='text' value={this.state.playerLookup} onChange={this.handlePlayerSearch}></input><br/><br/>
-               <input type='submit' value='Submit'></input>
-             </label>
-           </form>  */}
            </p>
           ))}
+          <label>
+               <input type='text' onChange={this.searchFunc}></input><br/><br/>
+               <button type='button' onClick={this.searchHandler}>Search</button>
+          </label>
         </div>
       );
     }
