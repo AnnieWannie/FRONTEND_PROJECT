@@ -5,33 +5,43 @@ import './Style.css'
 
 function Player() {
   return(
-    <div>
-      <TeamMount />
+    <div className = 'wrapper'>
+    <h2 className = "pageheader">
+        Teams & Players
+    </h2>
+        <br></br>
       <PlayerMount/>
+      <PlayerOfTheDay/>
+      <TeamMount />
+      
     </div>
 
   );
 }
 
 
-
-function UserInputTeam() {
-  const [teamChoice, setTeamChoice] = useState("");
-  var teamChange = (event) => {
-  setTeamChoice(event.target.value);
-  };
-  return (
-  <div>
-   <form>
-   <label for="teamName">Team Selection</label>{' '}<input id="teamName" type="text" onChange={teamChange} />
-   <input type="submit" value="Submit"></input>
-   </form>
-   <TeamMount/>
-   {/* <PlayerMount/> */}
-  </div>
-  );
+ function PlayerOfTheDay(){
+   return (
+     <div className="potd">
+      <h3>Player of the Day</h3>
+      <img src='images/Lebron.jpeg'></img>
+      <h4>Lebron James</h4>
+      <h5>
+      Career Stats<br/>
+       <h6>
+         G: 1366 <br/>
+         PTS: 27.1<br/>
+         TRB: 7.5<br/>
+         AST: 7.4<br/>
+         FG%: 50.5<br/>
+         FG3%: 34.6<br/>
+         FT%: 73.4<br/>
+         eFG%: 54.5
+       </h6>
+      </h5>
+     </div>
+   )
  }
-
 
 
 
@@ -68,16 +78,14 @@ class TeamMount extends React.Component {
     const {team} = this.state;
     let teamHolder;
       return (
-        <h4>
-          Team Information <br></br>
+        <p>
         {teamHolder = team.map(teams => (
-              <ul>
-                <li key={teams.id}>
-                  Team Name: {teams.full_name} Conference: {teams.conference} | 
-                </li><br></br>
-              </ul>
+                <h5 className = 'teamlist'>
+                  {teams.full_name}
+                </h5>
           ))}
-        </h4>
+        </p>
+      
       );
     }
 }
@@ -86,11 +94,19 @@ class PlayerMount extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      player:[]
+      player:[],
+      playerLookup:''
     };
   }
-  
+ 
+  // handlePlayerSearch(event){
+  //   this.setState({playerLookup:event.target.value});
+  //   event.preventDefault();
+  // }
+
   componentDidMount() {
+    // const {playerLookup} = this.state.playerLookup;
+    const playerLookup = prompt("Please enter the name of the player you would like to search");
     const options = {
       method: 'GET',
       headers: {
@@ -99,7 +115,7 @@ class PlayerMount extends React.Component {
       }
     };
     
-    fetch('https://free-nba.p.rapidapi.com/players?page=0&per_page=25', options)
+    fetch('https://free-nba.p.rapidapi.com/players?page=0&per_page=1&search='+ playerLookup, options)
       .then(response => response.json())
       .then(response => {
         this.setState({
@@ -114,15 +130,23 @@ class PlayerMount extends React.Component {
     const {player} = this.state;
     let playerHolder;
       return (
-        <h4>
-        {playerHolder = player.map(players => (
-              <ul>
-                <li key={players.id}>
-                  First Name: {players.first_name} Last Name: {players.last_name} Position:{players.position} Height: {players.height_feet}ft {players.height_inches}in 
-                </li>
-              </ul>
+        <div>
+        {playerHolder = player.map(players => (              
+           <p className = 'playerdetails'>
+           <h3>Player Search Result</h3> 
+           <img src='images/NBALogo.png' style={{width:'150px', height:'150px'}}></img><br/>
+           {players.first_name} {players.last_name} <br/> Team: {players.team.full_name} <br/> Division: {players.team.division} <br/> Position: {players.position} <br/> Height: {players.height_feet}ft {players.height_inches}in
+           <br/><br/>
+           {/* <form onSubmit={this.handlePlayerSearch}>
+             <label>
+               Player Search:{' '}
+               <input type='text' value={this.state.playerLookup} onChange={this.handlePlayerSearch}></input><br/><br/>
+               <input type='submit' value='Submit'></input>
+             </label>
+           </form>  */}
+           </p>
           ))}
-        </h4>
+        </div>
       );
     }
 }

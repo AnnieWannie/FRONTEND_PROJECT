@@ -35,6 +35,54 @@ height: 5rem;
     font-size: 1rem;
 }
 
+.pageheader{
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(32, 37, 39);
+    color:#ffffff;
+    font-size: 2.5em;
+}
+
+.teamlist{
+    display: block;
+    float:right;
+    padding: 17px;     
+    margin: auto;
+}
+
+.loginform{
+    text-align: center;
+    display: block;
+}
+
+.potd{
+    float:right;
+    margin-right: 75px;
+    padding-right: 35px;
+    padding-left: 35px;
+    font-family: fantasy;
+}
+
+.playerdetails{
+    text-align: center;
+    font-weight: 100;
+    font-size: 1.4em;
+    float:left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer {
+    background-color: rgb(32, 37, 39);
+    border-top:solid rgb(255, 115, 0);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    color: white;
+    font-size: 12px;
+   }
+
+
 a{
     font-family: 'Monserrat', sans-serif;
     color: #11999e;

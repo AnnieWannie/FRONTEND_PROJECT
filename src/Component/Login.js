@@ -2,33 +2,33 @@ import React from 'react';
 import './Style.css'
 import { Form, Button} from 'react-bootstrap'
 
-function Login() {
+function Login(){
   return (
     <div>
-    <img src='images/fantasyleague.png'></img>
-<Form>
-  <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" />
-    <Form.Text className="text-muted">
-      We'll never share your email with anyone else.
-    </Form.Text>
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formBasicPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" />
-  </Form.Group>
-  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
-  </Form.Group>
+    <h2 className = 'pageheader'>Fantasy League Login</h2>
+    <img style={{display: 'block', marginLeft: 'auto', marginRight: 'auto', width: '355px', height: '355px'}} src='images/fantasyleague.png'></img>
+    <br/>
+<Form className= 'loginform'>
+<label>
+    <b>Email</b><br/>
+    <input type="text" name="email" />
+  </label>
+  <br/><br/>
+  <label>
+    <b>Password</b>
+    <br/>
+    <input type="password" name="password" />
+  </label>
+  <br/><br/>
   <Button variant="primary" type="submit">
-    Submit
+    Login
   </Button>
+  <br/><br/>
+  <h2>New User Registration</h2>
+  <Button variant="primary" type="submit" href='/Register'>Register</Button>
 </Form>
     </div>
-
   )
-}
+  }
 
 export default Login;

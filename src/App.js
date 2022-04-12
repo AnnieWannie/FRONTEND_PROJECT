@@ -2,6 +2,8 @@ import Home from "./Component/Home";
 import Login from "./Component/Login";
 import About from "./Component/About";
 import Player from "./Component/Player";
+import Register from "./Component/Register";
+import Footer from "./Component/Footer";
 import {Navbar, Nav, Container} from 'react-bootstrap'
 import {
   BrowserRouter,
@@ -29,9 +31,9 @@ function App() {
     </Navbar.Brand>
     <Nav className="me-auto">
       <Nav.Link as= {Link} to= "/">Home</Nav.Link>
-      <Nav.Link as= {Link} to="/Player">Players/Statistics</Nav.Link>
-      <Nav.Link as= {Link} to="/Login">Login/Register</Nav.Link>
-      <Nav.Link as= {Link} to="/About">AboutUs</Nav.Link>
+      <Nav.Link as= {Link} to="/Player">Teams & Players</Nav.Link>
+      <Nav.Link as= {Link} to="/Login">Fantasy League</Nav.Link>
+      <Nav.Link as= {Link} to="/About">About Us</Nav.Link>
     </Nav>
     </Container>
   </Navbar>
@@ -44,8 +46,10 @@ function App() {
  <Route path= '/Login' element={<Login/>}/>  
  <Route path= '/Player' element={<Player/>}/> 
  <Route path= '/About' element={<About/>}/> 
+ <Route path= '/Register' element={<Register/>}/> 
  </Routes>
     </div>
+    <Footer/>
     </BrowserRouter>
   );
 }
