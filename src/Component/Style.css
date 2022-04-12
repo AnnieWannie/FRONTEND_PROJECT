@@ -45,7 +45,7 @@ height: 5rem;
 
 .teamlist{
     display: block;
-    float:right;
+    float:left;
     padding: 17px;     
     margin: auto;
 }
