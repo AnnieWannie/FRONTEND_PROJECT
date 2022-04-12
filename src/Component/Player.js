@@ -21,9 +21,13 @@ function Player() {
 
 
  function PlayerOfTheDay(){
+     var today = new Date();
+     var month = today.getMonth() + 1;
+     var day = today.getDate();
+     var year = today.getFullYear();
    return (
      <div className="potd">
-      <h3>Player of the Day</h3>
+      <h3>Player of the Day {month}/{day}/{year}</h3>
       <img src='images/Lebron.jpeg'></img>
       <h4>Lebron James</h4>
       <h5>
